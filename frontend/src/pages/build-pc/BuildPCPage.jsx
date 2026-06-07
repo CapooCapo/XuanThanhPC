@@ -1,20 +1,48 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { mockProducts } from '../../data/mockProducts';
-import FilterSidebar from '../../components/build-pc/FilterSidebar';
-import MobileFilterDrawer from '../../components/build-pc/MobileFilterDrawer';
-import SearchBar from '../../components/build-pc/SearchBar';
-import ProductGrid from '../../components/build-pc/ProductGrid';
-import Pagination from '../../components/build-pc/Pagination';
-import Header from '../../components/layout/Header/Header';
-import '../../styles/build-pc/build-pc.scss';
+import { mockProducts } from '@/data/mockProducts';
+import FilterSidebar from '@/components/buildpc/FilterSidebar';
+import MobileFilterDrawer from '@/components/buildpc/MobileFilterDrawer';
+import SearchBar from '@/components/buildpc/SearchBar';
+import ProductGrid from '@/components/buildpc/ProductGrid';
+import Pagination from '@/components/buildpc/Pagination';
+import Header from '@/components/layout/Header/Header';
+import BuildPCQuizModal from '@/components/buildpc/quiz/BuildPCQuizModal';
+import { calculateRecommendations } from '@/utils/recommendationEngine';
+import { getProducts } from '@/services/productService';
+import '@/styles/build-pc/build-pc.scss';
 
 const PRODUCTS_PER_PAGE = 20;
 
 const BuildPCPage = () => {
+  const [products, setProducts] = useState(mockProducts);
   const [searchQuery, setSearchQuery] = useState('');
   const [activeFilters, setActiveFilters] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
+  const [quizAnswers, setQuizAnswers] = useState(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const data = await getProducts();
+        if (data && data.length > 0) {
+          // Map backend specifications to match frontend expectations
+          const mappedData = data.map(p => ({
+            ...p,
+            cpu: p.specifications?.cpu || 'Unknown',
+            gpu: p.specifications?.gpu || 'Unknown',
+            ram: p.specifications?.ram || 'Unknown',
+            purpose: p.specifications?.purpose || 'Gaming',
+            specs: p.specifications?.specs || []
+          }));
+          setProducts(mappedData);
+        }
+      } catch (error) {
+        console.error('Failed to fetch products, falling back to mock data:', error);
+      }
+    };
+    fetchProducts();
+  }, []);
 
   // Scroll to top when page changes
   useEffect(() => {
@@ -41,6 +69,48 @@ const BuildPCPage = () => {
     setCurrentPage(1); // Reset page on filter change
   };
 
+  const handleApplyRecommendation = (answers) => {
+    setQuizAnswers(answers);
+    const newFilters = { ...activeFilters };
+    
+    // Map quiz answers to product filters for the regular grid too
+    if (answers.purpose) {
+      const purposeMap = {
+        'gaming': 'Gaming',
+        'office': 'Văn phòng',
+        'design': 'Đồ họa',
+        'streaming': 'Streamer'
+      };
+      if (purposeMap[answers.purpose]) {
+        newFilters['Mục đích sử dụng'] = [purposeMap[answers.purpose]];
+      }
+    }
+    
+    if (answers.budget) {
+      const budgetMap = {
+        'under_10m': 'Dưới 10 triệu',
+        '10_20m': '10 - 20 triệu',
+        '20_40m': '20 - 40 triệu',
+        'above_40m': 'Trên 40 triệu'
+      };
+      if (budgetMap[answers.budget]) {
+        newFilters['Khoảng giá'] = [budgetMap[answers.budget]];
+      }
+    }
+
+    setActiveFilters(newFilters);
+    setCurrentPage(1);
+    
+    // Scroll to products slightly below header
+    setTimeout(() => window.scrollTo({ top: 300, behavior: 'smooth' }), 100);
+  };
+
+  const recommendedProducts = useMemo(() => {
+    if (!quizAnswers) return [];
+    return calculateRecommendations(products, quizAnswers)
+      .filter(p => p.recommendationScore >= 20); // Only keep highly relevant matches
+  }, [quizAnswers, products]);
+
   const toggleMobileFilter = () => {
     setIsMobileFilterOpen(!isMobileFilterOpen);
   };
@@ -54,7 +124,7 @@ const BuildPCPage = () => {
   };
 
   const filteredProducts = useMemo(() => {
-    return mockProducts.filter(product => {
+    return products.filter(product => {
       // 1. Search Query
       const matchesSearch = searchQuery === '' || 
         product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -86,7 +156,7 @@ const BuildPCPage = () => {
 
       return matchesFilters;
     });
-  }, [searchQuery, activeFilters]);
+  }, [searchQuery, activeFilters, products]);
 
   const totalPages = Math.ceil(filteredProducts.length / PRODUCTS_PER_PAGE);
   const currentProducts = filteredProducts.slice(
@@ -97,6 +167,7 @@ const BuildPCPage = () => {
   return (
     <>
       <Header />
+      <BuildPCQuizModal onApplyRecommendation={handleApplyRecommendation} />
       <div className="build-pc-page">
         <div className="container">
           {/* Left Sidebar (Desktop) */}
@@ -132,6 +203,16 @@ const BuildPCPage = () => {
           </div>
 
           <div className="products-section">
+            {quizAnswers && recommendedProducts.length > 0 && (
+              <div className="recommendations-section" style={{ marginBottom: '40px' }}>
+                <div className="results-count" style={{ marginBottom: '16px', color: '#19C37D', fontWeight: 'bold', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '1.5rem' }}>✨</span> Gợi ý hàng đầu dựa trên bài test của bạn
+                </div>
+                <ProductGrid products={recommendedProducts.slice(0, 4)} />
+                <hr style={{ margin: '40px 0', border: 'none', borderTop: '1px solid #eee' }} />
+              </div>
+            )}
+
             <div className="results-count" style={{ marginBottom: '16px', color: '#667085' }}>
               Hiển thị {currentProducts.length} trên tổng số {filteredProducts.length} sản phẩm
             </div>

@@ -1,6 +1,6 @@
-@import '../../styles/auth/variables';
-@import '../../styles/auth/mixins';
-@import '../../styles/auth/animations';
+@use "@/styles/variables" as *;
+@use '@/styles/auth/mixins' as *;
+@use '@/styles/auth/animations' as *;
 
 .premium-auth-container {
   display: flex;

@@ -1,12 +1,13 @@
-@import 'variables';
+@use "@/styles/variables" as *;
+@use "@/styles/mixins" as *;
 
 .build-pc-page {
-  background-color: $bg-color;
+  background-color: $background;
   min-height: 100vh;
   padding: 40px 20px;
   margin-top: 60px;
-  color: $text-color;
-  font-family: 'Inter', sans-serif;
+  color: $text-dark;
+  font-family: $font-main;
 
   .container {
     max-width: 1440px;
@@ -14,7 +15,7 @@
     display: flex;
     gap: 32px;
 
-    @include mobile {
+    @include responsive-mobile {
       flex-direction: column;
     }
   }
@@ -23,7 +24,7 @@
     width: 280px;
     flex-shrink: 0;
 
-    @include mobile {
+    @include responsive-mobile {
       display: none; // Hidden on mobile, use drawer instead
     }
   }

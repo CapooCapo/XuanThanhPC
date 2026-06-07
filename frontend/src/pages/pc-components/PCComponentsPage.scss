@@ -1,5 +1,5 @@
-@import '../../styles/ecommerce/variables';
-@import '../../styles/ecommerce/mixins';
+@use "@/styles/variables" as *;
+@use '@/styles/ecommerce/mixins' as *;
 
 .pc-components-page {
     &__hero {

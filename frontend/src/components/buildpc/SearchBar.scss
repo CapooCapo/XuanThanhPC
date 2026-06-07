@@ -1,0 +1,45 @@
+@use "@/styles/variables" as *;
+
+.search-bar-container {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+
+  .search-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    .search-icon {
+      position: absolute;
+      left: 16px;
+      color: $text-light;
+      display: flex;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 16px 20px 16px 48px;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      border-radius: $radius-lg;
+      background-color: $surface;
+      box-shadow: $shadow-sm;
+      color: $text-dark;
+      transition: $transition-smooth;
+      outline: none;
+      font-family: inherit;
+
+      &::placeholder {
+        color: $text-light;
+      }
+
+      &:focus {
+        border-color: rgba(25, 195, 125, 0.5);
+        box-shadow: 0 0 0 4px rgba(25, 195, 125, 0.1), $shadow-sm;
+      }
+    }
+  }
+}

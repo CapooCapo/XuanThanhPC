@@ -1,7 +1,7 @@
-@import './reset';
-@import './variables';
-@import './support/support';
-@import './ecommerce/ecommerce';
+@use './reset' as *;
+@use "@/styles/variables" as *;
+@use './support/support' as *;
+@use './ecommerce/ecommerce' as *;
 
 * {
   margin: 0;

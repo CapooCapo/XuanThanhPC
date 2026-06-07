@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from '../../components/layout/Header/Header';
-import Footer from '../../components/layout/Footer/Footer';
-import ContactForm from '../../components/ecommerce/ContactForm';
-import ContactInfoCard from '../../components/ecommerce/ContactInfoCard';
-import SocialContactCard from '../../components/ecommerce/SocialContactCard';
+import Header from '@/components/layout/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
+import ContactForm from '@/pages/contact/components/ContactForm';
+import ContactInfoCard from '@/pages/contact/components/ContactInfoCard';
+import SocialContactCard from '@/pages/contact/components/SocialContactCard';
 import './ContactPage.scss';
 
 const ContactPage = () => {

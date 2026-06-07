@@ -1,6 +1,7 @@
-@import 'variables';
-@import 'mixins';
-@import 'animations';
+@use "sass:color";
+@use "@/styles/variables" as *;
+@use 'mixins' as *;
+@use 'animations' as *;
 
 .eco-page-wrapper {
     margin-top: 64px;
@@ -50,7 +51,7 @@
     cursor: pointer;
 
     &:hover {
-        background: darken(#19C37D, 5%);
+        background: color.adjust(#19C37D, $lightness: -5%);
         transform: translateY(-2px);
         box-shadow: $eco-shadow-glow;
     }

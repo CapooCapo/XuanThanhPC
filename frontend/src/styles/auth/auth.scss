@@ -1,6 +1,6 @@
-@import 'variables';
-@import 'mixins';
-@import 'animations';
+@use "@/styles/variables" as *;
+@use 'mixins' as *;
+@use 'animations' as *;
 
 body {
   margin: 0;

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import AuthLayout from '../../components/auth/AuthLayout';
-import InputField from '../../components/auth/InputField';
-import PasswordInput from '../../components/auth/PasswordInput';
-import SocialLoginButtons from '../../components/auth/SocialLoginButtons';
-import { useAuth } from '../../context/AuthContext';
+import { useNavigate, Link, useSearchParams } from 'react-router-dom';
+import AuthLayout from '@/components/auth/AuthLayout';
+import InputField from '@/components/auth/InputField';
+import PasswordInput from '@/components/auth/PasswordInput';
+import SocialLoginButtons from '@/components/auth/SocialLoginButtons';
+import { useAuth } from '@/contexts/AuthContext';
 
 const LoginPage = () => {
   const [credentials, setCredentials] = useState({ username: '', password: '' });
   const [error, setError] = useState('');
   const { login } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirectUrl = searchParams.get('redirect');
 
   const handleChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -20,7 +22,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       await login(credentials);
-      navigate('/profile');
+      navigate(redirectUrl || '/profile');
     } catch (err) {
       setError('Invalid username or password');
     }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AuthLayout from '../../components/auth/AuthLayout';
-import PasswordInput from '../../components/auth/PasswordInput';
+import AuthLayout from '@/components/auth/AuthLayout';
+import PasswordInput from '@/components/auth/PasswordInput';
 
 const ResetPasswordPage = () => {
   const [formData, setFormData] = useState({ password: '', password_confirm: '' });

@@ -1,0 +1,33 @@
+@use "@/styles/mixins" as *;
+@use "@/styles/variables" as *;
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+
+  @include responsive-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include responsive-mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.no-products {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: $surface;
+  border-radius: $radius-md;
+  box-shadow: $shadow-sm;
+
+  h3 {
+    color: $text-dark;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: $text-light;
+  }
+}

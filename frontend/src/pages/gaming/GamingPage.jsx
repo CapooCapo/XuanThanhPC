@@ -1,10 +1,10 @@
 import React from 'react';
-import Header from '../../components/layout/Header/Header';
-import Footer from '../../components/layout/Footer/Footer';
-import GamingHero from '../../components/ecommerce/GamingHero';
-import GamingCategoryCard from '../../components/ecommerce/GamingCategoryCard';
-import ProductGrid from '../../components/ecommerce/ProductGrid';
-import GamingShowcase from '../../components/ecommerce/GamingShowcase';
+import Header from '@/components/layout/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
+import GamingHero from '@/pages/gaming/components/GamingHero';
+import GamingCategoryCard from '@/pages/gaming/components/GamingCategoryCard';
+import ProductGrid from '@/components/product/ProductGrid';
+import GamingShowcase from '@/pages/gaming/components/GamingShowcase';
 import './GamingPage.scss';
 
 const MOCK_GAMING_CATEGORIES = [

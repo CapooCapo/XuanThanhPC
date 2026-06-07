@@ -1,4 +1,4 @@
-@import '../../styles/auth/variables';
+@use "@/styles/variables" as *;
 
 .input-field {
   display: flex;

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/layout/Header/Header';
-import Footer from '../../components/layout/Footer/Footer';
-import SearchBar from '../../components/ecommerce/SearchBar';
-import FilterSidebar from '../../components/ecommerce/FilterSidebar';
-import ProductGrid from '../../components/ecommerce/ProductGrid';
-import Pagination from '../../components/ecommerce/Pagination';
+import Header from '@/components/layout/Header/Header';
+import Footer from '@/components/layout/Footer/Footer';
+import SearchBar from '@/components/common/SearchBar';
+import FilterSidebar from '@/pages/pc-components/components/FilterSidebar';
+import ProductGrid from '@/components/product/ProductGrid';
+import Pagination from '@/components/common/Pagination';
 import './PCComponentsPage.scss';
 
 // Mock Data

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import AuthLayout from '../../components/auth/AuthLayout';
-import InputField from '../../components/auth/InputField';
-import PasswordInput from '../../components/auth/PasswordInput';
-import * as authService from '../../services/authService';
+import AuthLayout from '@/components/auth/AuthLayout';
+import InputField from '@/components/auth/InputField';
+import PasswordInput from '@/components/auth/PasswordInput';
+import * as authService from '@/services/authService';
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({ username: '', email: '', password: '', password_confirm: '' });

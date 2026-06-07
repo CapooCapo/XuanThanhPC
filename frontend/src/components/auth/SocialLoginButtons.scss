@@ -1,5 +1,5 @@
-@import '../../styles/auth/variables';
-@import '../../styles/auth/mixins';
+@use "@/styles/variables" as *;
+@use '@/styles/auth/mixins' as *;
 
 .social-login {
   margin-top: 2rem;

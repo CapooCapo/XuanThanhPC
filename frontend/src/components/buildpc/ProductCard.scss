@@ -1,0 +1,140 @@
+@use "sass:color";
+@use "@/styles/variables" as *;
+
+.product-card {
+  background-color: $surface;
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: $shadow-sm;
+  transition: $transition-smooth;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: $shadow-lg;
+  }
+
+  .card-image-wrapper {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background-color: #F8F9FA;
+    position: relative;
+    
+    .recommendation-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: linear-gradient(135deg, #19C37D, #10A37F);
+      color: white;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      z-index: 2;
+      box-shadow: 0 4px 12px rgba(25, 195, 125, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      
+      .star-icon {
+        color: #FFD700;
+        font-size: 1rem;
+      }
+    }
+    
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &:hover .card-image {
+    transform: scale(1.05);
+  }
+
+  .card-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    .recommendation-reasons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+      
+      .reason-tag {
+        background: rgba(30, 136, 229, 0.1);
+        color: #1E88E5;
+        font-size: 0.75rem;
+        font-weight: 600;
+        padding: 4px 8px;
+        border-radius: 12px;
+      }
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0 0 12px 0;
+      color: $text-dark;
+      line-height: 1.4;
+    }
+
+    .card-specs {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px 0;
+      flex-grow: 1;
+
+      li {
+        font-size: 0.85rem;
+        color: $text-light;
+        margin-bottom: 6px;
+        display: flex;
+        align-items: center;
+
+        &::before {
+          content: '•';
+          color: $primary;
+          margin-right: 8px;
+        }
+      }
+    }
+
+    .card-footer {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      .card-price {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #d32f2f; // Specific price color to stand out
+      }
+
+      .cta-button {
+        width: 100%;
+        padding: 10px;
+        background-color: $primary;
+        color: white;
+        border: none;
+        border-radius: $radius-sm;
+        font-weight: 600;
+        font-size: 0.95rem;
+        cursor: pointer;
+        transition: $transition-smooth;
+
+        &:hover {
+          background-color: color.adjust(#19C37D, $lightness: -5%);
+        }
+      }
+    }
+  }
+}

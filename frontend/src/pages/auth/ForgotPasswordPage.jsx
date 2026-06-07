@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import AuthLayout from '../../components/auth/AuthLayout';
-import InputField from '../../components/auth/InputField';
+import AuthLayout from '@/components/auth/AuthLayout';
+import InputField from '@/components/auth/InputField';
 
 const ForgotPasswordPage = () => {
   const [email, setEmail] = useState('');

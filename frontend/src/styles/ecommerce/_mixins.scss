@@ -1,4 +1,6 @@
-@import 'variables';
+@use "@/styles/variables" as *;
+
+@use "@/styles/variables" as *;
 
 @mixin flex-center {
     display: flex;

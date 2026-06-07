@@ -5,7 +5,10 @@ class SocketService {
         this.reconnectAttempts = 0;
         this.maxReconnectAttempts = 5;
         this.sessionId = localStorage.getItem('support_session_id') || 'new';
-        this.baseUrl = import.meta.env.VITE_WS_URL || 'ws://localhost:8000';
+        // Use relative path for production (Nginx) or default to localhost
+        const host = window.location.host;
+        const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+        this.baseUrl = import.meta.env.VITE_WS_URL || `${protocol}//${host}`;
     }
 
     connect() {
