@@ -1,0 +1,21 @@
+name: xuanthanh CI/CD Pipeline
+
+on:
+ push:
+   branches: [main]
+jobs:
+  backEnd-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test BE..."
+      
+  frontEnd-ci:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Test FE..."
+  deploy-cd:
+    runs-on: ubuntu-latest
+    needs: [backEnd-ci,frontEnd-ci]
+    steps:
+      - name: Tiến hành Deploy
+        run: echo "Bắt đầu đưa code lên VPS..."
