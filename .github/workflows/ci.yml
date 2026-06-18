@@ -1,21 +1,53 @@
-name: xuanthanh CI/CD Pipeline
+name: CI/CD Pipeline
 
 on:
- push:
-   branches: [main]
+  push:
+    branches: [ "main" ]
+
 jobs:
-  backEnd-ci:
+  backend-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+      - name: Run Tests
+        env:
+          SECRET_KEY: ${{ secrets.DJANGO_SECRET_KEY }}
+        run: python manage.py test
+
+  frontend-ci:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm install
+      - run: npm run build
+
+  deploy:
+    needs: [backend-ci, frontend-ci]
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Test BE..."
-      
-  frontEnd-ci:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Test FE..."
-  deploy-cd:
-    runs-on: ubuntu-latest
-    needs: [backEnd-ci,frontEnd-ci]
-    steps:
-      - name: Tiến hành Deploy
-        run: echo "Bắt đầu đưa code lên VPS..."
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /path/to/your/project
+            git pull origin main
+            docker-compose down
+            docker-compose up -d --build
