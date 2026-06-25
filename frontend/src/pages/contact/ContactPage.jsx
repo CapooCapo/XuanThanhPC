@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '@/components/layout/Header/Header';
-import Footer from '@/components/layout/Footer/Footer';
 import ContactForm from '@/pages/contact/components/ContactForm';
 import ContactInfoCard from '@/pages/contact/components/ContactInfoCard';
 import SocialContactCard from '@/pages/contact/components/SocialContactCard';
@@ -9,7 +7,6 @@ import './ContactPage.scss';
 const ContactPage = () => {
     return (
         <div className="eco-page-wrapper">
-            <Header />
             <div className="eco-page contact-page">
                 <div className="contact-page__hero">
                     <div className="eco-container">
@@ -56,7 +53,6 @@ const ContactPage = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

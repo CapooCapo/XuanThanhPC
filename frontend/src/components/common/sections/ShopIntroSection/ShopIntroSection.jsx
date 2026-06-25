@@ -17,7 +17,7 @@ const ShopIntroSection = () => {
           </ul>
         </div>
         <div className="shop-intro__image">
-          [Hình ảnh Showroom]
+          <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="XuanThanhPC Showroom" />
         </div>
       </div>
     </section>

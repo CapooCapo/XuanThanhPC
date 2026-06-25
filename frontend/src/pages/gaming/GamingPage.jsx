@@ -1,6 +1,4 @@
 import React from 'react';
-import Header from '@/components/layout/Header/Header';
-import Footer from '@/components/layout/Footer/Footer';
 import GamingHero from '@/pages/gaming/components/GamingHero';
 import GamingCategoryCard from '@/pages/gaming/components/GamingCategoryCard';
 import ProductGrid from '@/components/product/ProductGrid';
@@ -34,7 +32,6 @@ const MOCK_SETUPS = [
 const GamingPage = () => {
     return (
         <div className="eco-page-wrapper">
-            <Header />
             <div className="eco-page gaming-page">
                 <GamingHero />
 
@@ -61,7 +58,6 @@ const GamingPage = () => {
                     <GamingShowcase setups={MOCK_SETUPS} />
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

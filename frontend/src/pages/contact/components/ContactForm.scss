@@ -1,6 +1,5 @@
-@use "sass:color";
 @use "@/styles/variables" as *;
-@use '@/styles/ecommerce/mixins' as *;
+@import '@/styles/ecommerce/mixins';
 
 .contact-form {
     background: $eco-surface;
@@ -72,7 +71,7 @@
         margin-top: $eco-space-md;
         padding: $eco-space-md;
         background: rgba(25, 195, 125, 0.1);
-        color: color.adjust(#19C37D, $lightness: -10%);
+        color: darken(#19C37D, 10%);
         border-radius: $eco-radius-md;
         text-align: center;
         font-weight: 500;

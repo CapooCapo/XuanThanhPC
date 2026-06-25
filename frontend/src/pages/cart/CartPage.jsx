@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '@/components/layout/Header/Header';
 import { useCart } from '@/contexts/CartContext';
 import './CartPage.scss';
 
@@ -22,7 +21,6 @@ const CartPage = () => {
   if (isCartLoading) {
     return (
       <>
-        <Header />
         <div className="cart-page loading-state">
           <div className="container">
             <h2>Đang tải giỏ hàng...</h2>
@@ -38,7 +36,6 @@ const CartPage = () => {
 
   return (
     <>
-      <Header />
       <div className="cart-page">
         <div className="container">
           <h1 className="page-title">Giỏ hàng của bạn ({totalItems} sản phẩm)</h1>

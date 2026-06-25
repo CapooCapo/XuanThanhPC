@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Product, ProductImage
-from categories.models import Category
+from apps.categories.models import Category
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -22,7 +22,9 @@ class ProductListSerializer(serializers.ModelSerializer):
         model = Product
         fields = (
             'id', 'name', 'slug', 'short_description', 'category',
-            'price', 'discount_price', 'main_image', 'is_active', 'created_at'
+            'price', 'discount_price', 'main_image', 'is_active', 'created_at',
+            'model3d_url', 'power_draw', 'socket', 'gpu_length', 'cooler_height',
+            'form_factor', 'pcie_slots', 'm2_slots', 'sata_ports', 'gaming_score', 'productivity_score'
         )
 
     def get_main_image(self, obj):
@@ -44,7 +46,9 @@ class ProductDetailSerializer(serializers.ModelSerializer):
         fields = (
             'id', 'name', 'slug', 'description', 'short_description', 'category',
             'price', 'discount_price', 'stock', 'main_image', 'images',
-            'specifications', 'is_active', 'created_at'
+            'specifications', 'is_active', 'created_at',
+            'model3d_url', 'power_draw', 'socket', 'gpu_length', 'cooler_height',
+            'form_factor', 'pcie_slots', 'm2_slots', 'sata_ports', 'gaming_score', 'productivity_score'
         )
 
     def get_main_image(self, obj):

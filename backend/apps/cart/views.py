@@ -4,7 +4,7 @@ from rest_framework.permissions import AllowAny
 from django.shortcuts import get_object_or_404
 from .models import Cart, CartItem
 from .serializers import CartSerializer, CartItemSerializer
-from products.models import Product
+from apps.products.models import Product
 
 class CartViewSet(viewsets.ViewSet):
     permission_classes = (AllowAny,)

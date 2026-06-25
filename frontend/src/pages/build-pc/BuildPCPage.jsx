@@ -5,7 +5,6 @@ import MobileFilterDrawer from '@/components/buildpc/MobileFilterDrawer';
 import SearchBar from '@/components/buildpc/SearchBar';
 import ProductGrid from '@/components/buildpc/ProductGrid';
 import Pagination from '@/components/buildpc/Pagination';
-import Header from '@/components/layout/Header/Header';
 import BuildPCQuizModal from '@/components/buildpc/quiz/BuildPCQuizModal';
 import { calculateRecommendations } from '@/utils/recommendationEngine';
 import { getProducts } from '@/services/productService';
@@ -127,9 +126,9 @@ const BuildPCPage = () => {
     return products.filter(product => {
       // 1. Search Query
       const matchesSearch = searchQuery === '' || 
-        product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.cpu.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.gpu.toLowerCase().includes(searchQuery.toLowerCase());
+        (product.name || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (product.cpu || '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+        (product.gpu || '').toLowerCase().includes(searchQuery.toLowerCase());
       
       if (!matchesSearch) return false;
 
@@ -166,7 +165,6 @@ const BuildPCPage = () => {
 
   return (
     <>
-      <Header />
       <BuildPCQuizModal onApplyRecommendation={handleApplyRecommendation} />
       <div className="build-pc-page">
         <div className="container">

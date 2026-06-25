@@ -1,5 +1,5 @@
 @use "@/styles/variables" as *;
-@use '@/styles/ecommerce/mixins' as *;
+@import '@/styles/ecommerce/mixins';
 
 .gaming-hero {
     position: relative;

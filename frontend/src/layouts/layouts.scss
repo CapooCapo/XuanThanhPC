@@ -1,0 +1,52 @@
+:root {
+  --header-height: 70px;
+}
+
+.layout-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Ensure header is fixed and doesn't overlap content */
+.main-layout {
+  .main-content {
+    flex: 1;
+    padding-top: var(--header-height); /* Prevent content from hiding under fixed header */
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.fullscreen-layout {
+  height: 100vh;
+  overflow: hidden; /* For 3D Lab */
+
+  .fullscreen-content {
+    flex: 1;
+    padding-top: var(--header-height);
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - var(--header-height));
+    overflow: hidden;
+  }
+}
+
+.minimal-layout {
+  .minimal-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.admin-layout {
+  .admin-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+}

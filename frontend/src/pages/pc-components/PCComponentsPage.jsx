@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Header from '@/components/layout/Header/Header';
-import Footer from '@/components/layout/Footer/Footer';
 import SearchBar from '@/components/common/SearchBar';
 import FilterSidebar from '@/pages/pc-components/components/FilterSidebar';
 import ProductGrid from '@/components/product/ProductGrid';
@@ -82,7 +80,6 @@ const PCComponentsPage = () => {
 
     return (
         <div className="eco-page-wrapper">
-            <Header />
             <div className="eco-page pc-components-page">
                 <div className="pc-components-page__hero">
                     <div className="eco-container">
@@ -130,7 +127,6 @@ const PCComponentsPage = () => {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
     );
 };

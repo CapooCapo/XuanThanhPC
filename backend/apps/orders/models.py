@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
-from products.models import Product
-from cart.models import Cart
+from apps.products.models import Product
+from apps.cart.models import Cart
 import uuid
 
 class Order(models.Model):

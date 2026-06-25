@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Header from '@/components/layout/Header/Header';
 import { useCart } from '@/contexts/CartContext';
 import { useToast } from '@/contexts/ToastContext';
 import './CheckoutPage.scss';
@@ -30,7 +29,6 @@ const CheckoutPage = () => {
   if (isCartLoading) {
     return (
       <>
-        <Header />
         <div className="checkout-page loading-state">
           <div className="container">
             <h2>Đang tải thông tin...</h2>
@@ -44,7 +42,6 @@ const CheckoutPage = () => {
   if (items.length === 0) {
     return (
       <>
-        <Header />
         <div className="checkout-page">
           <div className="container empty-checkout">
             <h2>Giỏ hàng của bạn đang trống</h2>
@@ -58,7 +55,6 @@ const CheckoutPage = () => {
 
   return (
     <>
-      <Header />
       <div className="checkout-page">
         <div className="container">
           <h1 className="page-title">Thanh toán</h1>

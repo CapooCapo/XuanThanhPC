@@ -4,8 +4,8 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from django.db import transaction
 from .models import Order, OrderItem
 from .serializers import OrderSerializer, CheckoutSerializer
-from cart.models import Cart
-from cart.views import CartViewSet
+from apps.cart.models import Cart
+from apps.cart.views import CartViewSet
 
 class OrderViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = OrderSerializer

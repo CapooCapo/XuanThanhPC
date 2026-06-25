@@ -1,8 +1,8 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-from products.models import Product
-from categories.models import Category
-from orders.models import Order
+from apps.products.models import Product
+from apps.categories.models import Category
+from apps.orders.models import Order
 
 User = get_user_model()
 

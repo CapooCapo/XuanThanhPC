@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import Header from '@/components/layout/Header/Header';
 import { useCart } from '@/contexts/CartContext';
 import { useToast } from '@/contexts/ToastContext';
 import { apiClient } from '@/services/apiClient';
@@ -75,7 +74,6 @@ const ProductDetailPage = () => {
   if (loading) {
     return (
       <>
-        <Header />
         <div className="product-detail-page skeleton-container">
           <div className="skeleton skeleton-gallery" />
           <div className="skeleton-info">
@@ -92,7 +90,6 @@ const ProductDetailPage = () => {
   if (error || !product) {
     return (
       <>
-        <Header />
         <div className="product-detail-page error-container">
           <h2>Oops!</h2>
           <p>{error}</p>
@@ -108,7 +105,6 @@ const ProductDetailPage = () => {
 
   return (
     <>
-      <Header />
       <div className="product-detail-page">
         <div className="container">
           {/* Breadcrumb */}

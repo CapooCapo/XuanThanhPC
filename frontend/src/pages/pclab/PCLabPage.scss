@@ -1,0 +1,124 @@
+.pc-lab-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #0d0f12; // Dark theme
+  color: #fff;
+  overflow: hidden;
+
+  .lab-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background: #14181e;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    .breadcrumbs {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+
+      a {
+        color: #a0aec0;
+        text-decoration: none;
+        &:hover { color: #fff; }
+      }
+      .separator { color: #4a5568; }
+      .current { color: #19C37D; font-weight: 500; }
+    }
+
+    .lab-actions {
+      display: flex;
+      gap: 12px;
+
+      button {
+        padding: 8px 16px;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+
+        &.btn-secondary {
+          background: transparent;
+          border: 1px solid #4a5568;
+          color: #e2e8f0;
+          &:hover { background: rgba(255,255,255,0.05); }
+        }
+
+        &.btn-primary {
+          background: #19C37D;
+          border: none;
+          color: #fff;
+          &:hover { background: darken(#19C37D, 5%); }
+        }
+      }
+    }
+  }
+
+  .pc-lab-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+
+    .sidebar-catalog {
+      width: 320px;
+      min-width: 320px;
+      background: #14181e;
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .center-view {
+      flex: 1;
+      position: relative;
+      background: radial-gradient(circle at center, #1a1f26 0%, #0d0f12 100%);
+      
+      .loading-3d {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 1.5rem;
+        color: #19C37D;
+      }
+    }
+
+    .right-panel {
+      width: 380px;
+      min-width: 380px;
+      background: #14181e;
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      gap: 20px;
+      overflow-y: auto;
+
+      /* Make scrollbar subtle */
+      &::-webkit-scrollbar { width: 6px; }
+      &::-webkit-scrollbar-track { background: transparent; }
+      &::-webkit-scrollbar-thumb { background: #2d3748; border-radius: 3px; }
+    }
+  }
+}
+
+/* Make inner widgets fit nicely in the right panel */
+.performance-widget,
+.details-panel,
+.price-panel {
+  position: relative !important;
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: 100% !important;
+  box-shadow: none !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  background: rgba(255,255,255,0.02) !important;
+  border-radius: 8px !important;
+}

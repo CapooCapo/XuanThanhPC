@@ -6,9 +6,9 @@ from django.utils import timezone
 from datetime import timedelta
 
 from django.contrib.auth import get_user_model
-from products.models import Product
-from categories.models import Category
-from orders.models import Order
+from apps.products.models import Product
+from apps.categories.models import Category
+from apps.orders.models import Order
 
 from .serializers import (
     AdminUserSerializer,

@@ -1,8 +1,6 @@
 import React, { Suspense, lazy } from 'react';
-import Header from '@/components/layout/Header/Header';
 import ChoiceModal from '@/components/ui/ChoiceModal/ChoiceModal';
 import HeroSection from '@/components/common/sections/HeroSection/HeroSection';
-import Footer from '@/components/layout/Footer/Footer';
 
 const ShopIntroSection = lazy(() => import('@/components/common/sections/ShopIntroSection/ShopIntroSection'));
 const FeaturedPCSection = lazy(() => import('@/components/common/sections/FeaturedPCSection/FeaturedPCSection'));
@@ -14,7 +12,6 @@ const Home = () => {
   return (
     <div className="home-wrapper">
       <ChoiceModal />
-      <Header />
       <main>
         <HeroSection />
         <Suspense fallback={<div style={{ padding: '2rem', textAlign: 'center' }}>Loading...</div>}>
@@ -25,7 +22,6 @@ const Home = () => {
           <BenefitsSection />
         </Suspense>
       </main>
-      <Footer />
     </div>
   );
 };

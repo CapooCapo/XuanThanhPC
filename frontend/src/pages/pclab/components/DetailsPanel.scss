@@ -1,0 +1,107 @@
+.details-panel {
+  width: 350px;
+  background: rgba(20, 24, 30, 0.95);
+  border-left: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  z-index: 10;
+
+  h2 {
+    margin: 0 0 20px;
+    font-size: 1.2rem;
+    color: #fff;
+  }
+
+  .status-badges {
+    margin-bottom: 20px;
+    
+    .badge {
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-align: center;
+      
+      &.success {
+        background: rgba(25, 195, 125, 0.1);
+        color: #19C37D;
+        border: 1px solid #19C37D;
+      }
+      
+      &.error {
+        background: rgba(239, 68, 68, 0.1);
+        color: #ef4444;
+        border: 1px solid #ef4444;
+      }
+    }
+  }
+
+  .alert-box {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    
+    h4 {
+      margin: 0 0 10px;
+      font-size: 0.95rem;
+    }
+    
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.85rem;
+      
+      li {
+        margin-bottom: 5px;
+      }
+    }
+
+    &.error {
+      background: rgba(239, 68, 68, 0.1);
+      border-left: 4px solid #ef4444;
+      h4 { color: #ef4444; }
+    }
+
+    &.warning {
+      background: rgba(245, 158, 11, 0.1);
+      border-left: 4px solid #f59e0b;
+      h4 { color: #f59e0b; }
+    }
+  }
+
+  .section-title {
+    margin: 20px 0 15px;
+    font-size: 1.1rem;
+    color: #e2e8f0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+  }
+
+  .parts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .part-item {
+      display: flex;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.03);
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+
+      .type {
+        font-size: 0.75rem;
+        color: #19C37D;
+        font-weight: bold;
+        margin-bottom: 4px;
+      }
+
+      .name {
+        font-size: 0.9rem;
+        color: #fff;
+      }
+    }
+  }
+}

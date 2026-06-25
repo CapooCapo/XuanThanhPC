@@ -1,0 +1,94 @@
+.performance-widget {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 280px;
+  background: rgba(20, 24, 30, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  z-index: 5;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+
+  h3 {
+    margin: 0;
+    color: #fff;
+    font-size: 1.1rem;
+  }
+
+  .subtitle {
+    margin: 4px 0 16px;
+    font-size: 0.8rem;
+    color: #a0aec0;
+  }
+
+  .bottleneck-alert {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    margin-bottom: 16px;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+  }
+
+  .scores-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+
+    .score-box {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 10px 5px;
+      border-radius: 8px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+
+      .label {
+        font-size: 0.65rem;
+        color: #a0aec0;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .value {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #19C37D;
+
+        span {
+          font-size: 0.7rem;
+          color: #64748b;
+        }
+      }
+    }
+  }
+
+  .fps-predictions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .fps-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      color: #e2e8f0;
+      padding-bottom: 6px;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+      .fps {
+        color: #19C37D;
+        font-weight: bold;
+      }
+    }
+  }
+}
